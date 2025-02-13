@@ -65,7 +65,7 @@ public class CustomClaimMapper extends AbstractOIDCProtocolMapper
             // keycloak session object.
             KeycloakContext keycloakContext = keycloakSession.getContext();
             keycloakContext.getHttpRequest().getMultiPartFormParameters().forEach((k, v) -> {
-                logger.info("k:" + k + ", v:" + v);
+                logger.debug("k:" + k + ", v:" + v);
             });
 
             keycloakContext.getHttpRequest()
@@ -95,7 +95,7 @@ public class CustomClaimMapper extends AbstractOIDCProtocolMapper
                     Map.Entry<String, JsonNode> field = fields.next();
                     String key = field.getKey();
                     String value = field.getValue().asText();
-                    logger.debug("Claim key: " + key + ", Claim value: " + value);
+                    logger.info("Claim key: " + key + ", Claim value: " + value);
 
                     // Add the extracted key-value pairs to the token
                     token.getOtherClaims().put(key, value);
